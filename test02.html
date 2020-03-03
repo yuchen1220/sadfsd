@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript">
+			function Ask(){
+				var str=form1.hanpi.value;
+				if(str==""){
+					alert("回答我,憨批，到底是不是。");
+					form1.hanpi.focus();
+					return;
+				}else{
+					var check=/[\u4E00-\u9FA5]{2,}/;
+					if(check.test(str)==true){
+						alert("知道了，滚吧");
+					}else{
+						alert("果然如此，滚吧。");	
+					}
+				}
+			}
+			function Time(clock){
+				var now = new Date();
+				var year = now.getFullYear();
+				var month = now.getMonth();
+				var date = now.getDate();
+				var day = now.getDay();
+				var hour = now.getHours();
+				var minutes = now.getMinutes();
+				var sec = now.getSeconds();
+				month = month+1;
+				var arr_week = new Array("星期日","星期一","星期二","星期三","星期四","星期五","星期六");
+				var week = arr_week[day];
+				var time = year + "年" + month + "月" + day + "日  " + week + " " +hour + ":" + minutes + ":" + sec;
+				clock.innerHTML="当前时间：" + time;
+			}
+			window.onload=function(){
+					window.setInterval("Time(clock)",1000);
+				}
+		</script>
+	</head>
+	<body>
+		<center>
+		<form name="form1">
+			请问你是憨批吗：<input type="text" name="hanpi" id="hanpi"  />
+			<input name="submit" type="button" onclick="Ask()" value="提交" />
+			<input type="button" name="close" id="close" value="关闭" onclick="window.close()" />
+		</form><br /><br /><br /><br />
+		<div id="clock"></div>
+		</center>
+		
+		
+	</body>
+</html>
